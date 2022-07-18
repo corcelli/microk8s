@@ -6,7 +6,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git url:'https://github.com/corcelli/microk8s.git', branch:'master'
+        git url:'https://github.com/corcelli/microk8s.git', branch:'main'
       }
     }
     
@@ -38,7 +38,4 @@ pipeline {
         }
       }
     }
-
-  }
-
 }
