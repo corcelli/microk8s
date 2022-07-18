@@ -9,7 +9,12 @@ pipeline {
         git url:'https://github.com/corcelli/microk8s.git', branch:'main'
       }
     }
-    
+
+    stage('Initialize'){
+        def dockerHome = tool 'docker2'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
+
       stage("Build image") {
             steps {
                 script {
