@@ -14,7 +14,7 @@ pipeline {
       stage("Build image") {
             steps {
                 script {
-                    def dockerHome = tool 'docker2'
+                    def dockerHome = tool 'docker'
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
                     appName = "app"
                     tag = "latest"
