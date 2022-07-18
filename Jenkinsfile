@@ -18,7 +18,7 @@ pipeline {
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
                     appName = "app"
                     tag = "latest"
-                    registryHost = "127.0.0.1:30400/"
+                    registryHost = "10.152.183.135:30400/"
                     imageName = "${registryHost}${appName}:${tag}"
                     customImage = docker.build("${imageName}")
                 }
