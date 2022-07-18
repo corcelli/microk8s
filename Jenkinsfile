@@ -10,14 +10,12 @@ pipeline {
       }
     }
 
-    stage('Initialize'){
-        def dockerHome = tool 'docker2'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
-
+    
       stage("Build image") {
             steps {
                 script {
+                    def dockerHome = tool 'docker2'
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
                     appName = "app"
                     tag = "latest"
                     registryHost = "127.0.0.1:30400/"
