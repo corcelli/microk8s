@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     def dockerHome = tool 'docker'
-                    env.PATH = "${dockerHome}/:${env.PATH}"
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
                     appName = "app"
                     tag = "latest"
                     registryHost = "10.152.183.135:30400/"
