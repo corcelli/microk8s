@@ -1,6 +1,12 @@
 pipeline {
 
-  agent any
+  agent {
+    kubernetes {
+      	cloud 'kubernetes'
+      	label 'default'
+      	defaultContainer 'jnlp'
+      }
+    }
 
   stages {
 
