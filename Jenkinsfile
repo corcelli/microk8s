@@ -35,7 +35,7 @@ pipeline {
     stage ('Deploy') {
     steps{
         sshagent(credentials : ['use-the-id-from-credential-generated-by-jenkins']) {
-            sh 'ls -la'
+            sh 'kubectl apply -f manifest_v1.yaml'
         }
     }
 }
