@@ -40,14 +40,13 @@ pipeline {
       	defaultContainer 'jnlp'
       }
     }
-  stages {
+  
     stage('Deploy App') {
       steps {
         script {
           kubernetesDeploy(configs: "manifest.yaml", kubeconfigId: "MINIKUBECONFIG")
         }
       }
-    }
   }
 }
 }
