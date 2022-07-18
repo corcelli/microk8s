@@ -17,7 +17,7 @@ pipeline {
                     appName = "app"
                     tag = "latest"
                     registryHost = "192.168.200.24:30400/"
-                    imageName = "${registryHost}${appName}:${tag}"
+                    imageName = "${registryHost}${appName}"
                     customImage = docker.build("${imageName}")
                 }
             }
