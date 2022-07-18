@@ -31,6 +31,7 @@ pipeline {
                 }
             }
 }
+
 }
 pipeline {
   agent {
@@ -44,7 +45,7 @@ pipeline {
     stage('Deploy App') {
       steps {
         script {
-          kubernetesDeploy(configs: "hellodocker.yaml", kubeconfigId: "MINIKUBECONFIG")
+          kubernetesDeploy(configs: "manifest.yaml", kubeconfigId: "kubernetes")
         }
       }
     }
