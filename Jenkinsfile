@@ -1,6 +1,12 @@
 pipeline {
 
-  agent any
+  agent {
+    kubernetes {
+      	cloud 'kubernetes'
+      	label 'default'
+      	defaultContainer 'jnlp'
+      }
+    }
 
   stages {
 
@@ -31,22 +37,15 @@ pipeline {
                 }
             }
         
-
     
-    agent {
-    kubernetes {
-      	cloud 'kubernetes'
-      	label 'default'
-      	defaultContainer 'jnlp'
-      }
-    }
-  
+  stages {
     stage('Deploy App') {
       steps {
         script {
           kubernetesDeploy(configs: "manifest.yaml", kubeconfigId: "MINIKUBECONFIG")
         }
       }
+    }
   }
 }
 }
