@@ -14,8 +14,6 @@ pipeline {
       stage("Build image") {
             steps {
                 script {
-                    #def dockerHome = tool 'docker1'
-                    #env.PATH = "${dockerHome}/bin:${env.PATH}"
                     appName = "app"
                     tag = "latest"
                     registryHost = "10.152.183.135:30400/"
