@@ -1,17 +1,3 @@
-apiVersion: extensions/v1beta1
-kind: Service
-metadata:
-  name: app
-  labels:
-    app: app
-spec:
-  ports:
-    - port: 5000
-      targetPort: 5000
-  selector:
-    app: app
-  type: LoadBalancer
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
