@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: " 192.168.200.24:30400/app:latest"
+          image: " 192.168.200.24:30400/app"
           imagePullPolicy: Always
           ports:
             - name: http
