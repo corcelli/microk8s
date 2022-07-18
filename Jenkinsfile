@@ -32,13 +32,14 @@ pipeline {
             }
 
     
-    stage('Deploy App') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "manifest_v1.yaml", kubeconfigId: "kube7")
+    stage ('Deploy') {
+    steps{
+        sshagent(credentials : ['use-the-id-from-credential-generated-by-jenkins']) {
+            sh 'ls -la'
         }
-      }
     }
+}
+
   
 }
 
