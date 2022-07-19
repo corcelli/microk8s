@@ -6,7 +6,7 @@ metadata:
     app: app
 spec:
   ports:
-    - nodePort: 30163
+    - nodePort: 30165
       port: 80
       targetPort: 80
   selector:
