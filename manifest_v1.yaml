@@ -6,11 +6,11 @@ metadata:
     app: app
 spec:
   ports:
-    - port: 5000
-      targetPort: 80
+    - port: 80
+      targetPort: 5000
   selector:
     app: app
-  type: LoadBalancer
+  type: LoadBalancer  
 ---
 apiVersion: apps/v1
 kind: Deployment
