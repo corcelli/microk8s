@@ -39,7 +39,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: ingress.teste.localhost
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
