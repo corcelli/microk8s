@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: "10.152.183.135:30400/app"
+          image: "jenkinstecno.netextreme.com.br:443/app"
           imagePullPolicy: Always
           ports:
             - name: http

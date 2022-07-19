@@ -16,7 +16,7 @@ pipeline {
                 script {
                     appName = "app"
                     tag = "latest"
-                    registryHost = "192.168.200.24:30400/"
+                    registryHost = "jenkinstecno.netextreme.com.br:443"
                     imageName = "${registryHost}${appName}"
                     customImage = docker.build("${imageName}")
                 }
