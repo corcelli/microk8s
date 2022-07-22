@@ -51,7 +51,7 @@ spec:
       port:
         number: 80
   rules:
-    - host: teste.localhost
+    - host: app.services.sitac.com.br
       http:
         paths:
           - path: /
