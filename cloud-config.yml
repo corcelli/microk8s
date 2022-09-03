@@ -1,0 +1,14 @@
+hostname: rancher01
+
+rancher:
+  network:
+    interfaces:
+      eth0:
+        address: 192.168.120.10/24
+        gateway: 192.168.120.1
+        dhcp: false
+    dns:
+      nameservers:
+        - 8.8.8.8
+        - 1.1.1.1
+        - 9.9.9.9
