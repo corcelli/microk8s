@@ -3,6 +3,9 @@ Durante a instalação do Ubuntu Server selecionar a opção do microk8s.
 Habilitar as featues
     microk8s enable dns dashboard storage ingress
 
+Listar todos os recursos instalados
+    microk8s kubectl get all --all-namespaces
+
 Gerar token para acesso do dashboard.
     microk8s kubectl create token default
 
@@ -32,5 +35,25 @@ spec:
 
     Additionally, the ingress addon can be configured to expose TCP and UDP services by editing the nginx-ingress-tcp-microk8s-conf
  and nginx-ingress-udp-microk8s-conf ConfigMaps respectively, and then exposing the port in the Ingress controller.
+ 
+ A common use case is enabling the use-forwarded-headers flag so that NGINX passes incoming X-Forwarded-* headers to upstreams
+ 
+microk8s.kubectl -n ingress edit configmaps nginx-load-balancer-microk8s-conf
+
+Fica como na configuracao a baixo.
+apiVersion: v1
+kind: ConfigMap
+data: #add
+  use-forwarded-headers: "true" #add
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{},"name":"nginx-load-balancer-microk8s-conf","namespace":"ingress"}}
+  creationTimestamp: "2022-03-22T17:56:51Z"
+  name: nginx-load-balancer-microk8s-conf
+  namespace: ingress
+  resourceVersion: "666"
+  selfLink: /api/v1/namespaces/ingress/configmaps/nginx-load-balancer-microk8s-conf
+  uid: 1cf017c4-505a-47f1-8ff6-6dc93efd853d
 
 ########################
