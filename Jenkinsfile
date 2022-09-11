@@ -34,7 +34,7 @@ pipeline {
     
     stage ('Deploy') {
     steps{
-        sshagent(credentials : ['use-the-id-from-credential-generated-by-jenkins']) {
+        sshagent(credentials : ['ssh-key']) {
             sh 'kubectl apply -f manifest.yaml'
             sh 'kubectl rollout restart deployment app'
         }
