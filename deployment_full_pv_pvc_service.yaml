@@ -1,0 +1,80 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nginx2
+  labels:
+    k8s-app: nginx2
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: nginx2
+  template:
+    metadata:
+      name: nginx2
+      labels:
+        k8s-app: nginx2
+    spec:
+      containers:
+      - name: nginx
+        image: "registry-es.services.netextreme.com.br/nginx-corcelli"
+        imagePullPolicy: Always
+        volumeMounts:
+          - mountPath: "/var/www/html"
+            name: data-www
+      volumes:
+      - name: data-www
+        persistentVolumeClaim:
+          claimName: pv-claim-cliente2
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-clientes2
+  labels:
+    type: local
+spec:
+  storageClassName: dataclientes2
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data_k8s/cliente2"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pv-claim-cliente2
+spec:
+  storageClassName: dataclientes2
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx2
+spec:
+  ports:
+  - name: tcp-nginx2
+    nodePort: 32700
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    k8s-app: nginx2
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}
