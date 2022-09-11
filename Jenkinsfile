@@ -16,7 +16,7 @@ pipeline {
                 script {
                     appName = "app"
                     tag = "latest"
-                    registryHost = "registry.services.sitac.com.br/"
+                    registryHost = "registry-es.services.netextreme.com.br/"
                     imageName = "${registryHost}${appName}"
                     customImage = docker.build("${imageName}")
                 }
@@ -35,7 +35,7 @@ pipeline {
     stage ('Deploy') {
     steps{
         sshagent(credentials : ['use-the-id-from-credential-generated-by-jenkins']) {
-            sh 'kubectl apply -f manifest_v1.yaml'
+            sh 'kubectl apply -f manifest.yaml'
             sh 'kubectl rollout restart deployment app'
         }
     }
