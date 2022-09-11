@@ -34,7 +34,7 @@ pipeline {
     
     stage ('Deploy') {
     steps{
-        sshagent(credentials : ['ssh-key']) {
+        sshagent() {
             sh 'kubectl apply -f manifest.yaml'
             sh 'kubectl rollout restart deployment app'
         }
